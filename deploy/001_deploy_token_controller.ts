@@ -5,13 +5,12 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const {deployments, getNamedAccounts} = hre;
   const {deploy, execute, read} = deployments;
 
-  const {deployer} = await getNamedAccounts();
+  const {deployer, multisig} = await getNamedAccounts();
 
   const minDelay = 2 * 24 * 3600
-  const proposers = [deployer]
+  const proposers = [multisig]
 
-  // TODO: add multisig as executor
-  const executors = [deployer]
+  const executors = [multisig]
 
   await deploy('TokenController', {
     from: deployer,
