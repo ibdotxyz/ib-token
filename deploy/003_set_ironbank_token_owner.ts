@@ -17,7 +17,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   )
 
   const owner = await read('IronBankToken', 'owner')
-  console.log('onwer', owner)
+  console.log('owner', owner)
 };
 export default func;
 func.tags = ['SetTokenController'];

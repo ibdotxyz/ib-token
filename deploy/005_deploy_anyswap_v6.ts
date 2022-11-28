@@ -5,7 +5,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const {deployments, getNamedAccounts} = hre;
   const {deploy, execute} = deployments;
 
-  const {deployer, vault} = await getNamedAccounts();
+  const {deployer} = await getNamedAccounts();
 
   await deploy('AnyswapV6ERC20', {
     from: deployer,
@@ -13,8 +13,8 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     log: true,
   });
 
-  let tx = await execute('AnyswapV6ERC20', { from: deployer }, 'initVault', vault);
-  console.log('initVault, tx:', tx.transactionHash);
+  // let tx = await execute('AnyswapV6ERC20', { from: deployer }, 'initVault', vault);
+  // console.log('initVault, tx:', tx.transactionHash);
 };
 export default func;
 func.tags = ['anyswap'];
